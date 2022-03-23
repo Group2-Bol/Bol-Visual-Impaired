@@ -1,0 +1,12 @@
+.nav-bar{
+    font-family: graphik,arial,helvetica,sans-serif;
+    background-color: #0000a4;
+    color: white;
+    height: 20vh;
+}
+
+.search-bar{
+    height: 20vh;
+    margin-right: 10vw;
+    float: right;
+}
