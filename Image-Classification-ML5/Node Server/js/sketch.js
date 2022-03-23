@@ -15,6 +15,7 @@ function setup() {
   image(img, 0, 0);
 }
 
+
 // A function to run when we get any errors and the results
 function gotResult(error, results) {
   // Display error in the console
@@ -25,5 +26,22 @@ function gotResult(error, results) {
     console.log(results);
     createDiv(`Label: ${results[0].label}`);
     createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
+    
+    //Creates button for text to speech
+    var inputElement = document.createElement('button');
+    inputElement.textContent = 'Listen';
+    inputElement.addEventListener('click', function () {
+      textToSpeech(results[0].label, nf(results[0].confidence, 0, 2));
+    });
+    document.body.appendChild(inputElement);
   }
+}
+
+async function textToSpeech(label, confidence) {
+  var synth = window.speechSynthesis;
+  var utterThis = new SpeechSynthesisUtterance(`Label: ${label}, Confidence: ${confidence}`);
+  utterThis.lang = 'en-US';
+  synth.speak(utterThis);
+
+
 }
